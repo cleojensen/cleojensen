@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Joke Generator</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background-color: #f4f1ec;
+            color: #2e2e2e;
+        }
+
+        .header {
+            background-color: #d6c3b3;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .joke-box {
+            background-color: #f8f4ef;
+            border-left: 6px solid #3e2c23;
+            padding: 25px;
+            border-radius: 8px;
+            min-height: 120px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        button {
+            background-color: #3e2c23;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a4033;
+        }
+
+        .button-row {
+            text-align: center;
+        }
+
+        .category {
+            text-align: center;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Get a Laugh: Try the Music Joke Generator</h1>
+        <p>Click once for the setup, again for the punchline</p>
+    </div>
+
+    <div class="container">
+
+        <div class="category" id="category">Category: Ready</div>
+
+        <div class="joke-box" id="jokeBox">
+            Click below to start a joke
+        </div>
+
+        <div class="button-row">
+            <button onclick="handleJoke()">Get Joke</button>
+        </div>
+
+        <div class="back-link">
+            <a href="jamiroquai.html">Back to Jamiroquai Page</a>
+        </div>
+
+    </div>
+
+    <script>
+        const jokes = [
+            {
+                category: "Classical",
+                setup: "Why was Beethoven such a good composer?",
+                punchline: "Because he was very decomposer."
+            },
+            {
+                category: "Classical",
+                setup: "Why did Mozart get rid of his chickens?",
+                punchline: "Because they kept saying, 'Bach, Bach, Bach.'"
+            },
+            {
+                category: "Jazz",
+                setup: "Why did the jazz musician get locked out?",
+                punchline: "Because he lost his keys."
+            },
+            {
+                category: "Disco",
+                setup: "Why did the disco ball go to school?",
+                punchline: "It wanted to be a little brighter."
+            },
+            {
+                category: "Funk",
+                setup: "Why did the bass player always get invited back?",
+                punchline: "Because they knew how to support the groove."
+            },
+            {
+                category: "Music History",
+                setup: "Why do music historians love old records?",
+                punchline: "Because they enjoy a good spin on the past."
+            },
+            {
+                category: "Jamiroquai Energy",
+                setup: "Why did the Jamiroquai fan walk carefully across the room?",
+                punchline: "They were avoiding another Virtual Insanity moment."
+            }
+        ];
+
+        let currentJoke = null;
+        let showingSetup = false;
+
+        function handleJoke() {
+            if (!showingSetup) {
+                // pick new joke and show setup
+                const randomIndex = Math.floor(Math.random() * jokes.length);
+                currentJoke = jokes[randomIndex];
+
+                document.getElementById("jokeBox").textContent = currentJoke.setup;
+                document.getElementById("category").textContent = "Category: " + currentJoke.category;
+
+                showingSetup = true;
+            } else {
+                // show punchline
+                document.getElementById("jokeBox").textContent = currentJoke.punchline;
+                showingSetup = false;
+            }
+        }
+    </script>
+
+</body>
+</html>
